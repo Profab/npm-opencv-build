@@ -13,7 +13,7 @@ export function getLibsFactory(
   }
 
   function getLibSuffix() {
-    return isWin() ? 'lib' : (isOSX() ? 'dylib' : 'so')
+    return isWin() ? 'lib' : (isOSX() ? 'dylib' : '(?:so|a)')
   }
 
   function getLibNameRegex(opencvModuleName: string) {

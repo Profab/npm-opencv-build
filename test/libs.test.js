@@ -86,6 +86,20 @@ describe('libs', () => {
     expect(res.find(l => l.opencvModule === 'core')).to.have.property('libPath').to.equal(coreLibFile)
   })
 
+  it('should find opencv .a files', () => {
+    const coreLibFile = 'libopencv_core.a'
+    const libFiles = [
+      coreLibFile
+    ]
+
+    const getLibs = createFake(libFiles)
+    const res = getLibs()
+    expect(res).to.be.an('array').lengthOf(opencvModules.length)
+    expect(res.some(({ opencvModule }) => opencvModule === 'core'))
+    expect(res.find(l => l.opencvModule === 'core')).to.have.property('libPath').to.equal(coreLibFile)
+  })
+
+
   it('should find opencv .dylib files', () => {
     const coreLibFile = 'libopencv_core.dylib'
     const libFiles = [
